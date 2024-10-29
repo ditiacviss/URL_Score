@@ -36,7 +36,7 @@ def main():
     api_key = st.text_input('Enter your API Key for PageRank:',  type="password")
     sender_email = st.text_area("Enter the email id:")
     password = st.text_input('Enter your email password:',  type="password")
-    receiver_email = st.text_area("Enter the receiver's email id:")
+    receiver_emails = st.text_area("Enter the receiver's email id(s), separated by commas:")
 
     user_input = st.text_area("Enter the URL:")
     if st.button("Enter") and user_input:
@@ -84,10 +84,11 @@ def main():
             st.write(outcome_message)
 
             logger_info(f"Outcome for URL {url} is {outcome_message}")
-            sendmail(sender_email,receiver_email, url, f'Outcome for {url} is ---> {outcome_message}',password)
+            sendmail(sender_email, receiver_emails, f'Outcome for {url}', f'Outcome for {url} is ---> {outcome_message}', password)
 
         except Exception as e:
             st.write(f"Error processing the URL: {e}")
+
     # else:
     #     st.write("Please upload a valid keys.yaml file to proceed.")
 
