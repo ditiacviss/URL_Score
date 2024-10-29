@@ -5,10 +5,10 @@ from email.mime.multipart import MIMEMultipart
 
 smtp_server = "smtp.gmail.com"
 port = 587
-sender_email = "diti.b@acviss.com"
+# sender_email = "diti.b@acviss.com"
 context = ssl.create_default_context()
 
-def sendmail(receiver_email, subject, message, password):
+def sendmail(sender_email, receiver_email, subject, message, password):
     try:
         with smtplib.SMTP(smtp_server, port) as server:
             server.starttls(context=context)
